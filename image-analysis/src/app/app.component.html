@@ -1,0 +1,54 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+<div style="text-align:center">
+  <h1>
+    Welcome to {{title}}!
+  </h1>
+</div>
+
+
+
+<form  [formGroup] = "userForm" #AdminInformation (ngSubmit)="AdminForm(AdminInformation)"> 
+
+  <h1 class="heading-primary">
+      <div  class="heading-primary-main">
+          <div class=" col-md-offset-1 col-md-4">  
+          <input type="file"accept= "Image/*" formControlName="image" (change)="selectFile($event)" >
+          </div>
+      </div>
+  </h1>
+  <div >
+      <div class="heading-primary-main" style="width: 100px;">  
+      
+      <button mat-raised-button >Process the File</button>
+      
+      </div>
+
+  </div>
+
+</form>
+<div fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+  <mat-card class="card-picture" *ngFor="let imge of facedetails">
+    <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+      <span fxFlex="80%">{{imge.name}}</span>
+      <mat-icon fxFlex="10%">mode_edit</mat-icon>
+      <mat-icon fxFlex="10%">delete</mat-icon>
+    </mat-card-title>
+    
+
+    <img mat-card-image src="{{'data:image/jpg;base64,' +imge.encodedImageContent }}" >
+
+    <mat-card-content style="background-color: whitesmoke ; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold;">
+      Gender : {{imge.gender}} <br>
+      Emotion :  {{imge.emotion}} <br>
+      Age Range :  {{imge.ageRange}} <br>
+      Eye Glasses :  {{imge.eyeGlasses}}
+
+    </mat-card-content >
+
+  </mat-card>
+</div>
+
+
+<router-outlet></router-outlet>

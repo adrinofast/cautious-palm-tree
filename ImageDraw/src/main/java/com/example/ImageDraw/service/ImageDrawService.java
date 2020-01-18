@@ -5,9 +5,11 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.ImageDraw.model.FaceDetailObj;
+
 public interface ImageDrawService {
 	
-	List<String> detectFaces(MultipartFile file, String name) throws IOException;
+	List<FaceDetailObj> detectFaces(MultipartFile file, String name) throws IOException;
 	
 
 

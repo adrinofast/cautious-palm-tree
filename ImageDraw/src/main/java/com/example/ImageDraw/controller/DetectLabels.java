@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import com.example.ImageDraw.service.*;
+import com.example.ImageDraw.model.FaceDetailObj;
 import com.example.ImageDraw.model.Student;
 import com.example.ImageDraw.service.ImageDrawService;
 import com.example.ImageDraw.serviceImpl.ExtractImages;
@@ -49,15 +50,16 @@ public class DetectLabels {
 	}
 	
 	@RequestMapping(value="/detectMe", method = RequestMethod.POST)
-	public ResponseEntity<List<String>> detectFaces(@RequestPart(value = "file") MultipartFile file , @RequestPart(value = "fileName") String name) throws IOException
+	public ResponseEntity<List<FaceDetailObj>> detectFaces(@RequestPart(value = "file") MultipartFile file , @RequestPart(value = "fileName") String name) throws IOException
 	{
 		ImageDawServiceImpl imd = new ImageDawServiceImpl();
 		String filestName = name;
 		
 		extImg.upLoadFIletos3(file, filestName);
-		List<String> images =imd.detectFaces(file, filestName);
+		//List<FaceDetailObj>  facedetailss =null;
+		List<FaceDetailObj> facedetailss =imd.detectFaces(file, filestName);
 		
-		return new ResponseEntity<List<String>>(images,HttpStatus.OK);
+		return new ResponseEntity<List<FaceDetailObj>>(facedetailss,HttpStatus.OK);
 	}
 	
 //	@ResponseBody

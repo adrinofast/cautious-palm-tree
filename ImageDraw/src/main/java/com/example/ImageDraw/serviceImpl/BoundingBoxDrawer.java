@@ -11,7 +11,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.imageio.ImageIO;
 
@@ -19,14 +22,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.amazonaws.services.rekognition.model.*;
+import com.example.ImageDraw.model.FaceDetailObj;
 
 
 public class BoundingBoxDrawer {
 	
 	public String dirPath="";
+	List<FaceDetailObj>  faceDetalList = new ArrayList<FaceDetailObj>();
 	
-	
-	public  List<String> drawBoundingBoxes(byte[] bytes, DetectFacesResult result, String fileName) throws IOException {
+	public  List<FaceDetailObj> drawBoundingBoxes(byte[] bytes, DetectFacesResult result, String fileName) throws IOException {
 	    int width;
 	    int height;
 	    BufferedImage img;
@@ -35,6 +39,7 @@ public class BoundingBoxDrawer {
 	    dirPath = "F:\\ResultsImag\\" + fileName;
 	    
 	    File direto = new File(dirPath);
+	    
 	    Graphics2D graphics;
 	    try {
 	        img = ImageIO.read(new ByteArrayInputStream(bytes));
@@ -43,7 +48,7 @@ public class BoundingBoxDrawer {
 	        graphics = img.createGraphics();
 	    } catch (IOException e) {
 	        System.err.println("Failed to read image: " + e.getLocalizedMessage());
-	        return facesCroped;
+	        return faceDetalList;
 	    }
 	    System.out.println("Image: width=" + width + ", height=" + height);
 	 
@@ -56,12 +61,50 @@ public class BoundingBoxDrawer {
 	    	direto.mkdir();
 	    }
 	    
-	    List<FaceDetail> faceDetails = result.getFaceDetails();
-	    for (FaceDetail faceDetail : faceDetails) {
+	    List<FaceDetail> faceDetails = result.getFaceDetails();	
+	    for (FaceDetail faceDetail : faceDetails) {	
+	    	
 	    
 	        drawBoundingBox(faceDetail, orientationCorrection, width, height, graphics);
 	        cropFace(img,faceDetail,width, height, fileName);
 	        
+	        String cropImageName = fileName + faceDetail.hashCode() + "img__CROP_bb.jpg";
+	        
+	        System.out.println("imahe ame cropped"+ "" + cropImageName);
+	        System.out.println("path"+ " "+ dirPath);
+	        
+	        String encodedImgContent = generateBase64(cropImageName, dirPath);
+	        
+	        System.out.println("encoded string" +" " +  encodedImgContent);
+	        
+	        FaceDetailObj fdo = new FaceDetailObj();
+	        
+	        fdo.setAgeRange(faceDetail.getAgeRange().toString());
+	        
+	        HashMap<String,Float> hmapEmotions =new HashMap<String,Float>();
+	        
+	        
+	        for(Emotion emo : faceDetail.getEmotions())
+	        {
+	        	hmapEmotions.put(emo.getType(), emo.getConfidence());
+	        }
+	        
+	        maxvalue(hmapEmotions).toString();
+	        //fdo.setEmotion(faceDetail.getEmotions().toString());
+	        fdo.setEmotion(maxvalue(hmapEmotions).toString());
+	        fdo.setGender(faceDetail.getGender().getValue());
+	        fdo.setEyeGlasses(faceDetail.getEyeglasses().getValue());
+	        fdo.setEncodedImageContent(encodedImgContent);
+	        fdo.setName(cropImageName);
+//	        
+//	        System.out.println("age arange" + "" + faceDetail.getAgeRange().toString());
+//	        System.out.println("gender arange" + "" + faceDetail.getGender().getValue());
+//	        System.out.println("age emotion " + "" + faceDetail.getEmotions().toString());
+//	        System.out.println("age glasses" + "" + faceDetail.getEyeglasses().toString());
+	        
+	        faceDetalList.add(fdo);
+	        System.out.println(fdo.toString());
+	    
 	    }
 	 
 	    try {
@@ -76,8 +119,11 @@ public class BoundingBoxDrawer {
 	        System.err.println("Failed to write image: " + e.getLocalizedMessage());
 	    }
 	    
+	    System.out.println(faceDetalList.toString());
 	   facesCroped = ing(dirPath);
-	    return facesCroped;
+	    //return facesCroped;
+	   
+	   return faceDetalList;
 	}
 	 
 //	private void drawBoundingBox1(FaceDetail faceDetail, String orientationCorrection, int width, int height,
@@ -224,7 +270,7 @@ public class BoundingBoxDrawer {
 						e.printStackTrace();
 					}
 					
-					
+						
 				}
 				
 		}
@@ -233,6 +279,49 @@ public class BoundingBoxDrawer {
 	}
 	
 	
+	public String generateBase64(String fileName ,String filePath) throws IOException
+	{
+		String encodedImg = null;
+		
+		File filePathObj = new File(filePath);
+		for(final File file :filePathObj.listFiles() )
+		{
+			if(file.getName().equals(fileName))
+			{
+			
+				try {
+					FileInputStream fileInputStream = new FileInputStream(file);
+					byte[] imgContent = new byte[((int)file.length())];
+					fileInputStream.read(imgContent);
+					encodedImg =Base64.getEncoder().encodeToString(imgContent);
+					
+					//writeimage(encodeBase64);
+					//images.add("data:image/jpg"+":base64,"+encodeBase64);
+					//images.add(encodeBase64);
+					fileInputStream.close();
+					
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+		}
+		
+		return encodedImg;
+		
+	}
+	
+	public static <K, V extends Comparable<V>> Entry<K, V> maxvalue(Map<K, V> map) {
+	    Map.Entry<K, V> maxEntry = null;
+	    for (Map.Entry<K, V> entry : map.entrySet()) {
+	        if (maxEntry == null || entry.getValue()
+	            .compareTo(maxEntry.getValue()) > 0) {
+	            maxEntry = entry;
+	        }
+	    }
+	    return maxEntry;
+	}
 	}
 	
 

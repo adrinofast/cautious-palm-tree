@@ -20,14 +20,16 @@ import com.amazonaws.services.rekognition.AmazonRekognition;
 import com.amazonaws.services.rekognition.model.*;
 
 import com.example.ImageDraw.model.ClientFactory;
+import com.example.ImageDraw.model.FaceDetailObj;
 import com.example.ImageDraw.service.ImageDrawService;
 
 public class ImageDawServiceImpl implements ImageDrawService {
 	
-	
-
+	@Autowired
+	FaceDetailObj facedetail ;
+	List<FaceDetailObj>  fceDets =null;
 	@Override
-	public  List<String> detectFaces(MultipartFile file, String fileName) throws IOException {
+	public  List<FaceDetailObj> detectFaces(MultipartFile file, String fileName) throws IOException {
 		// TODO Auto-generated method stub
 		
 		List<String> facesCroped =null;
@@ -36,7 +38,7 @@ public class ImageDawServiceImpl implements ImageDrawService {
 		        bytes = file.getBytes();
 		    } catch (IOException e) {
 		        System.err.println("Failed to load image: " + e.getMessage());
-		        return facesCroped;
+		        return fceDets;
 		    }
 		 ByteBuffer byteBuffer = ByteBuffer.wrap(bytes);
 		 
@@ -49,6 +51,8 @@ public class ImageDawServiceImpl implements ImageDrawService {
 		 
 		    String orientationCorrection = result.getOrientationCorrection();
 		    System.out.println("Orientation correction: " + orientationCorrection);
+		    
+		    //System.out.println(result.toString());
 		 
 		    List<FaceDetail> faceDetails = result.getFaceDetails();
 		    List<BoundingBox> boundingBoxes = new ArrayList<BoundingBox>(faceDetails.size());
@@ -60,8 +64,9 @@ public class ImageDawServiceImpl implements ImageDrawService {
 		    
 		    BoundingBoxDrawer drawer = new BoundingBoxDrawer();
 		       // drawer.drawBoundingBoxes(bytes, result.getOrientationCorrection(), boundingBoxes);
-		     facesCroped = drawer.drawBoundingBoxes(bytes, result,fileName );
-		    return facesCroped;
+		    // facesCroped = drawer.drawBoundingBoxes(bytes, result,fileName );
+		    fceDets = drawer.drawBoundingBoxes(bytes, result,fileName );
+		    return fceDets;
 
 	}
 	
