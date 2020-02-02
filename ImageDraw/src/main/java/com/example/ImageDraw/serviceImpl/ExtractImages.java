@@ -15,6 +15,7 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.PutObjectResult;
 import com.amazonaws.util.IOUtils;
 
 @Component
@@ -35,7 +36,8 @@ public class ExtractImages {
 		 System.out.println("hello i am uploading");
 		 
 		 File convertedFile = ExtractImages.convert(file);
-		 s3client.putObject(bucketName,fileName,convertedFile);
+		 PutObjectResult putObjectResult = s3client.putObject(bucketName,fileName,convertedFile);
+		 
 		
 	}
 	

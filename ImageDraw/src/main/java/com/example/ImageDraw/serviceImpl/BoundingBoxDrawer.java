@@ -62,13 +62,15 @@ public class BoundingBoxDrawer {
 	    }
 	    
 	    List<FaceDetail> faceDetails = result.getFaceDetails();	
+	    int facesDetected = 0;
 	    for (FaceDetail faceDetail : faceDetails) {	
+	    	System.out.println(faceDetail.toString());
 	    	
-	    
+	    	facesDetected++;
 	        drawBoundingBox(faceDetail, orientationCorrection, width, height, graphics);
-	        cropFace(img,faceDetail,width, height, fileName);
+	        cropFace(img,faceDetail,width, height, fileName,facesDetected);
 	        
-	        String cropImageName = fileName + faceDetail.hashCode() + "img__CROP_bb.jpg";
+	        String cropImageName = "Detected Face" + facesDetected + ".jpg";
 	        
 	        System.out.println("imahe ame cropped"+ "" + cropImageName);
 	        System.out.println("path"+ " "+ dirPath);
@@ -208,7 +210,7 @@ public class BoundingBoxDrawer {
 	        }
 	    }
 	
-	private void cropFace(BufferedImage img, FaceDetail faceDetail, int width, int height, String fName)
+	private void cropFace(BufferedImage img, FaceDetail faceDetail, int width, int height, String fName, int facesDetected)
 	{
 		 BoundingBox bbo = faceDetail.getBoundingBox();
 		 
@@ -216,7 +218,7 @@ public class BoundingBoxDrawer {
 		 float left = Math.abs(width*bbo.getLeft());
 		    float top = height*bbo.getTop();
 		    	int scale = 1;		
-		    	String imageSave = dirPath + "\\" + fName;
+		    	String imageSave = dirPath + "\\" ;
 		    	
 		    	File savingPath = new File(imageSave);
 		    	if(!savingPath.exists())
@@ -232,7 +234,7 @@ public class BoundingBoxDrawer {
 		    	
 		    	if(savePath.exists())
 		    	{
-		    		 ImageIO.write(cropedImg, "jpg", new File( imageSave + faceDetail.hashCode() + "img__CROP_bb.jpg"));
+		    		 ImageIO.write(cropedImg, "jpg", new File( imageSave  + "Detected Face" + facesDetected + ".jpg"));
 		    	}
 		       
 		    } catch (IOException e) {
