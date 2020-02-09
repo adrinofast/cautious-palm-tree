@@ -9,10 +9,6 @@ public class Booking {
 	
 	
 	
-	
-	
- 
-	
 
 	public int getBookingId() {
 		return bookingId;

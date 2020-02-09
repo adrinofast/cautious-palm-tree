@@ -7,7 +7,7 @@ import java.util.List;
 
 public abstract class AirlineComapny {
 	
-	
+	private List<Flight> Flights;
 	
 	private List<String> airportList;
 	

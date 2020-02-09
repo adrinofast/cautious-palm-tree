@@ -1,14 +1,32 @@
 package com.coen6312.project;
 
+import java.util.List;
+
 public class Employee extends Person{
 	
 	private int employeeId;
     private  String role;
     private String Manager;
     
+    private List<Flight> FlightDetails;
     
     
     
+    
+	public List<Flight> getFlightDetails() {
+		return FlightDetails;
+	}
+
+
+
+
+	public void setFlightDetails(List<Flight> flightDetails) {
+		FlightDetails = flightDetails;
+	}
+
+
+
+
 	public int getEmployeeId() {
 		return employeeId;
 	}

@@ -17,7 +17,7 @@ public class Flight {
 	
 	private String flightDelay;
 	
-    private List<Passenger> passengerDetails;
+    private List<Booking> Bookingdetails;
     
 	private List<Employee> employeeList;
 	

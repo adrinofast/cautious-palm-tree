@@ -3,16 +3,18 @@ package com.coen6312.project;
 public class Passenger extends Person {
 	
 	
-	private Flight flightDetails;
+	private Booking BookingDetails;
 	
 
-	
-	public Flight getFlightDetails() {
-		return flightDetails;
+	public Booking getBookingDetails() {
+		return BookingDetails;
 	}
-	public void setFlightDetails(Flight flightDetails) {
-		this.flightDetails = flightDetails;
+
+
+	public void setBookingDetails(Booking bookingDetails) {
+		BookingDetails = bookingDetails;
 	}
+
 	@Override
 	public String toString() {
 		return "\n Passenger [\n name=" + name + ", \n address=" + address + ", \n telephone="
