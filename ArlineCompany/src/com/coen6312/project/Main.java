@@ -200,6 +200,8 @@ public class Main {
 				System.out.println("2.Cancel Booking");
 				System.out.println("3.Cancel All Booking");
 				System.out.println("4.Flight Delay Status");
+				System.out.println("5.Add an Employee");
+				
 				
 				Scanner scanOpt = new Scanner(System.in);
 				int selectedOption = scanOpt.nextInt();
@@ -258,6 +260,20 @@ public class Main {
 						  }
 					  }
 					  
+				  case 5:
+					  Employee empadd = new Employee();
+					  Scanner inp = new Scanner(System.in);
+					  System.out.println("Enter the Employee name");
+					 
+					  empadd.setName(inp.nextLine());
+					  System.out.println("Enter the Employee email");
+					  empadd.setEmail(inp.nextLine());
+					  System.out.println("Enter the Employee Phone");
+					  empadd.setEmail(inp.nextLine());
+					  System.out.println("Enter the Employee Address");
+					  empadd.setEmail(inp.nextLine());
+					  
+				  
 				  default:
 				    // code block
 				}
