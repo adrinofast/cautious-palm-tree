@@ -4,11 +4,7 @@
   <class id="1" language="java" name="com.coen6312.project.Booking" project="ArlineCompany" 
     file="/ArlineCompany/src/com/coen6312/project/Booking.java" binary="false" corner="BOTTOM_RIGHT">    
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
     <position height="-1" width="-1" x="72" y="363"/>    
-=======
-    <position height="-1" width="-1" x="21" y="284"/>    
->>>>>>> Stashed changes
 =======
     <position height="-1" width="-1" x="21" y="284"/>    
 >>>>>>> Stashed changes
@@ -21,11 +17,7 @@
   <class id="2" language="java" name="com.coen6312.project.Person" project="ArlineCompany" 
     file="/ArlineCompany/src/com/coen6312/project/Person.java" binary="false" corner="BOTTOM_RIGHT">    
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
     <position height="-1" width="-1" x="173" y="7"/>    
-=======
-    <position height="-1" width="-1" x="84" y="-6"/>    
->>>>>>> Stashed changes
 =======
     <position height="-1" width="-1" x="84" y="-6"/>    
 >>>>>>> Stashed changes
@@ -38,11 +30,7 @@
   <class id="3" language="java" name="com.coen6312.project.City" project="ArlineCompany" 
     file="/ArlineCompany/src/com/coen6312/project/City.java" binary="false" corner="BOTTOM_RIGHT">    
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
     <position height="-1" width="-1" x="705" y="485"/>    
-=======
-    <position height="-1" width="-1" x="852" y="162"/>    
->>>>>>> Stashed changes
 =======
     <position height="-1" width="-1" x="852" y="162"/>    
 >>>>>>> Stashed changes
@@ -69,9 +57,6 @@
   <class id="5" language="java" name="com.coen6312.project.Passenger" project="ArlineCompany" 
     file="/ArlineCompany/src/com/coen6312/project/Passenger.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="9" y="111"/>    
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
 >>>>>>> Stashed changes
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -82,11 +67,7 @@
   <class id="5" language="java" name="com.coen6312.project.Airport" project="ArlineCompany" 
     file="/ArlineCompany/src/com/coen6312/project/Airport.java" binary="false" corner="BOTTOM_RIGHT">    
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
     <position height="-1" width="-1" x="698" y="328"/>    
-=======
-    <position height="-1" width="-1" x="842" y="350"/>    
->>>>>>> Stashed changes
 =======
     <position height="-1" width="-1" x="842" y="350"/>    
 >>>>>>> Stashed changes
@@ -99,11 +80,7 @@
   <class id="6" language="java" name="com.coen6312.project.Employee" project="ArlineCompany" 
     file="/ArlineCompany/src/com/coen6312/project/Employee.java" binary="false" corner="BOTTOM_RIGHT">    
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
     <position height="-1" width="-1" x="301" y="116"/>    
-=======
-    <position height="-1" width="-1" x="246" y="123"/>    
->>>>>>> Stashed changes
 =======
     <position height="-1" width="-1" x="246" y="123"/>    
 >>>>>>> Stashed changes
@@ -116,11 +93,8 @@
   <class id="7" language="java" name="com.coen6312.project.Flight" project="ArlineCompany" 
     file="/ArlineCompany/src/com/coen6312/project/Flight.java" binary="false" corner="BOTTOM_RIGHT">    
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
     <position height="-1" width="-1" x="419" y="391"/>    
 =======
-=======
->>>>>>> Stashed changes
     <position height="300" width="211" x="337" y="175"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -131,9 +105,6 @@
   <class id="9" language="java" name="com.coen6312.project.Main" project="ArlineCompany" 
     file="/ArlineCompany/src/com/coen6312/project/Main.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="58" width="102" x="500" y="-96"/>    
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
 >>>>>>> Stashed changes
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -141,7 +112,6 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-<<<<<<< Updated upstream
 <<<<<<< Updated upstream
   <generalization id="8">    
     <end type="SOURCE" refId="6"/>    
@@ -152,8 +122,6 @@
       <attribute id="10" name="flight"/>      
       <multiplicity id="11" minimum="0" maximum="1"/>    
 =======
-=======
->>>>>>> Stashed changes
   <association id="10">    
     <end type="SOURCE" refId="8" navigable="false">      
       <attribute id="11" name="employeeList">        
@@ -162,15 +130,11 @@
       <multiplicity id="12" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
 >>>>>>> Stashed changes
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-<<<<<<< Updated upstream
 <<<<<<< Updated upstream
   <association id="12">    
     <end type="SOURCE" refId="7" navigable="false">      
@@ -184,6 +148,14 @@
     <end type="SOURCE" refId="7" navigable="false">      
       <attribute id="16" name="destinationAirport"/>      
       <multiplicity id="17" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="18">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="19" name="cityDetails"/>      
+      <multiplicity id="20" minimum="0" maximum="1"/>    
 =======
   <association id="13">    
     <end type="SOURCE" refId="1" navigable="false">      
@@ -205,47 +177,6 @@
       <multiplicity id="18" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
->>>>>>> Stashed changes
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-<<<<<<< Updated upstream
-  <association id="18">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="19" name="cityDetails"/>      
-      <multiplicity id="20" minimum="0" maximum="1"/>    
-=======
-  <association id="13">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="14" name="flight">        
-        <position height="0" width="0" x="-17" y="42"/>      
-      </attribute>      
-      <multiplicity id="15" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-17" y="42"/>      
-=======
-  <association id="19">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="20" name="cityDetails">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="21" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
->>>>>>> Stashed changes
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-<<<<<<< Updated upstream
-  <association id="16">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="17" name="Bookingdetails">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="18" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
@@ -256,21 +187,12 @@
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="21" minimum="0" maximum="1">        
-=======
-  <association id="22">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="23" name="sourceAirport">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="24" minimum="0" maximum="1">        
->>>>>>> Stashed changes
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
+    <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-<<<<<<< Updated upstream
   <association id="22">    
     <end type="SOURCE" refId="8" navigable="false">      
       <attribute id="23" name="sourceAirport">        
@@ -346,62 +268,10 @@
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
 >>>>>>> Stashed changes
-=======
-  <association id="25">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="26" name="passnger">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="27" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="28">    
-    <bendpoint x="362" y="74"/>    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="2"/>  
-  </generalization>  
-  <association id="29">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="30" name="Flights">        
-        <position height="0" width="0" x="-17" y="42"/>      
-      </attribute>      
-      <multiplicity id="31" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-17" y="42"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="32">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="33" name="airlineBelongsto">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="34" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
     </end>    
     <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="35">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="36" name="FlightDetails">        
-        <position height="0" width="0" x="-17" y="42"/>      
-      </attribute>      
-      <multiplicity id="37" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-17" y="42"/>      
-      </multiplicity>    
->>>>>>> Stashed changes
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-<<<<<<< Updated upstream
 <<<<<<< Updated upstream
   <generalization id="30">    
     <end type="SOURCE" refId="4"/>    
@@ -419,18 +289,9 @@
       </attribute>      
       <multiplicity id="37" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="-17" y="42"/>      
-=======
-  <association id="38">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="39" name="BookingDetails">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="40" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
->>>>>>> Stashed changes
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="38">    
@@ -460,9 +321,6 @@
       <multiplicity id="43" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
 >>>>>>> Stashed changes
     </end>    
     <end type="TARGET" refId="6" navigable="true"/>    
@@ -547,9 +405,6 @@
       <multiplicity id="62" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
 >>>>>>> Stashed changes
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    

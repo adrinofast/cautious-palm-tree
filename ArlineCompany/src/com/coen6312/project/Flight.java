@@ -1,11 +1,7 @@
 package com.coen6312.project;
 
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
 // edied by phni in prsthyusha
-=======
-import java.time.Duration;
->>>>>>> Stashed changes
 =======
 import java.time.Duration;
 >>>>>>> Stashed changes
@@ -15,10 +11,7 @@ import java.util.List;
 public class Flight {
 	
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
 =======
-=======
->>>>>>> Stashed changes
 	
 	
 >>>>>>> Stashed changes
@@ -30,10 +23,7 @@ public class Flight {
 	private String flightDuration;
 	private String fightCapacity;
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
 =======
-=======
->>>>>>> Stashed changes
 	private AirlineComapny airlineBelongsto;
 
 >>>>>>> Stashed changes
@@ -51,10 +41,7 @@ public class Flight {
 	private Airport destinationAirport;
 	
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
 =======
-=======
->>>>>>> Stashed changes
 	
 
 	public List<Booking> getBookingdetails() {
@@ -163,7 +150,6 @@ public class Flight {
 
 	public long setFlightDelay(long flightDelay) {
 		return this.flightDelay = flightDelay;
-<<<<<<< Updated upstream
 	}
 
 	public List<Passenger> getPassengerDetails() {
@@ -172,8 +158,6 @@ public class Flight {
 
 	public void setPassengerDetails(List<Passenger> passengerDetails) {
 		this.passengerDetails = passengerDetails;
-=======
->>>>>>> Stashed changes
 	}
 
 	public void addBooking(Booking b)
@@ -188,12 +172,9 @@ public class Flight {
 	
 	public void cancelAllBookings()
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
 	{
 		
 =======
-=======
->>>>>>> Stashed changes
 
 	{
 		int listBookings = this.Bookingdetails.size();
@@ -211,9 +192,6 @@ public class Flight {
 		 long minutesDelay = Duration.between(flight.getEstimatedArrivalTime(), flight.getArrivalTime()).toMinutes();
 		  return flight.setFlightDelay(minutesDelay);
 		 
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
 >>>>>>> Stashed changes
 	}
 

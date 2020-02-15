@@ -24,9 +24,6 @@ public  class AirlineComapny {
 	  
 	        return singleObject; 
 	    } 		
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
 >>>>>>> Stashed changes
 	
 	private List<Flight> Flights;
