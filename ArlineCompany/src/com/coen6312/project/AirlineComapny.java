@@ -5,9 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-<<<<<<< Updated upstream
-public abstract class AirlineComapny {
-=======
 public  class AirlineComapny {
 	
 	private static AirlineComapny singleObject = null; 
@@ -24,11 +21,12 @@ public  class AirlineComapny {
 	  
 	        return singleObject; 
 	    } 		
->>>>>>> Stashed changes
 	
 	private List<Flight> Flights;
 	
 	private List<String> airportList;
+	
+	private List<City> cities;
 	
 	public long flightDelay(Flight flight)
 	{

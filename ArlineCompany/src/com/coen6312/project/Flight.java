@@ -1,20 +1,14 @@
 package com.coen6312.project;
 
-<<<<<<< Updated upstream
-// edied by phni in prsthyusha
-=======
 import java.time.Duration;
->>>>>>> Stashed changes
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Flight {
 	
-<<<<<<< Updated upstream
-=======
 	
 	
->>>>>>> Stashed changes
 	private String  flightNumber;
 	private String  departureDate;
 	private LocalTime departureTime;
@@ -22,26 +16,21 @@ public class Flight {
 	private LocalTime arrivalTime;
 	private String flightDuration;
 	private String fightCapacity;
-<<<<<<< Updated upstream
-=======
 	private AirlineComapny airlineBelongsto;
 
->>>>>>> Stashed changes
 	
 	private LocalTime estimatedArrivalTime;
 	
 	private long flightDelay;
 	
-    private List<Booking> Bookingdetails;
-    
+    private List<Booking> Bookingdetails  = new ArrayList<Booking>();
+    	
 	private List<Employee> employeeList;
 	
 	
 	private Airport sourceAirport;
 	private Airport destinationAirport;
 	
-<<<<<<< Updated upstream
-=======
 	
 
 	public List<Booking> getBookingdetails() {
@@ -52,7 +41,6 @@ public class Flight {
 		Bookingdetails = bookingdetails;
 	}
 
->>>>>>> Stashed changes
 	public Airport getSourceAirport() {
 		return sourceAirport;
 	}
@@ -152,29 +140,21 @@ public class Flight {
 		return this.flightDelay = flightDelay;
 	}
 
-	public List<Passenger> getPassengerDetails() {
-		return passengerDetails;
-	}
-
-	public void setPassengerDetails(List<Passenger> passengerDetails) {
-		this.passengerDetails = passengerDetails;
-	}
-
+	
 	public void addBooking(Booking b)
 	{
-		
+		this.Bookingdetails.add(b);
+		System.out.println(this.Bookingdetails.toString());
 	}
 	
-	public void cancelBooking()
+	public void cancelBooking(Booking b)
 	{
-		
+		int indexOf = this.Bookingdetails.indexOf(b);
+		System.out.println("the index is " + " " + indexOf);
+		this.Bookingdetails.remove(indexOf);
 	}
 	
 	public void cancelAllBookings()
-<<<<<<< Updated upstream
-	{
-		
-=======
 
 	{
 		int listBookings = this.Bookingdetails.size();
@@ -192,17 +172,16 @@ public class Flight {
 		 long minutesDelay = Duration.between(flight.getEstimatedArrivalTime(), flight.getArrivalTime()).toMinutes();
 		  return flight.setFlightDelay(minutesDelay);
 		 
->>>>>>> Stashed changes
 	}
 
 	@Override
 	public String toString() {
-		return "\n Flight [flightNumber=" + flightNumber + ", departureDate=" + departureDate + ", departureTime="
+		return "Flight [flightNumber=" + flightNumber + ", departureDate=" + departureDate + ", departureTime="
 				+ departureTime + ", arrivalDate=" + arrivalDate + ", arrivalTime=" + arrivalTime + ", flightDuration="
-				+ flightDuration + ", fightCapacity=" + fightCapacity + ", estimatedArrivalTime=" + estimatedArrivalTime
-				+ ", flightDelay=" + flightDelay + ", passengerDetails=" + passengerDetails + ", employeeList="
-				+ employeeList + ", sourceAirport=" + sourceAirport + ", destinationAirport=" + destinationAirport
-				+ "]";
+				+ flightDuration + ", fightCapacity=" + fightCapacity 
+				+ ", estimatedArrivalTime=" + estimatedArrivalTime + ", flightDelay=" + flightDelay
+				+ ", employeeList=" + employeeList + ", sourceAirport="
+				+ sourceAirport + ", destinationAirport=" + destinationAirport + "]  + \"/n\"+";
 	}
 
 	
