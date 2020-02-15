@@ -95,6 +95,7 @@ public class Main {
 =======
 	   
 	   
+	   
 	   flightListGlobal = new ArrayList<Flight>();
 	   flightListGlobal.add(f1);
 	   flightListGlobal.add(f2);
