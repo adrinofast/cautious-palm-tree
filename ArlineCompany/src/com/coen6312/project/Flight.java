@@ -1,11 +1,20 @@
 package com.coen6312.project;
 
+<<<<<<< Updated upstream
 // edied by phni in prsthyusha
+=======
+import java.time.Duration;
+>>>>>>> Stashed changes
 import java.time.LocalTime;
 import java.util.List;
 
 public class Flight {
 	
+<<<<<<< Updated upstream
+=======
+	
+	
+>>>>>>> Stashed changes
 	private String  flightNumber;
 	private String  departureDate;
 	private LocalTime departureTime;
@@ -13,10 +22,15 @@ public class Flight {
 	private LocalTime arrivalTime;
 	private String flightDuration;
 	private String fightCapacity;
+<<<<<<< Updated upstream
+=======
+	private AirlineComapny airlineBelongsto;
+
+>>>>>>> Stashed changes
 	
 	private LocalTime estimatedArrivalTime;
 	
-	private String flightDelay;
+	private long flightDelay;
 	
     private List<Booking> Bookingdetails;
     
@@ -26,6 +40,19 @@ public class Flight {
 	private Airport sourceAirport;
 	private Airport destinationAirport;
 	
+<<<<<<< Updated upstream
+=======
+	
+
+	public List<Booking> getBookingdetails() {
+		return Bookingdetails;
+	}
+
+	public void setBookingdetails(List<Booking> bookingdetails) {
+		Bookingdetails = bookingdetails;
+	}
+
+>>>>>>> Stashed changes
 	public Airport getSourceAirport() {
 		return sourceAirport;
 	}
@@ -114,12 +141,15 @@ public class Flight {
 		this.estimatedArrivalTime = estimatedArrivalTime;
 	}
 
-	public String getFlightDelay() {
-		return flightDelay;
+	public long getFlightDelay() {
+		 long minutesDelay = Duration.between( this.getArrivalTime(),this.getEstimatedArrivalTime()).toMinutes();
+		  
+				  this.setFlightDelay(minutesDelay);
+				  return minutesDelay;
 	}
 
-	public void setFlightDelay(String flightDelay) {
-		this.flightDelay = flightDelay;
+	public long setFlightDelay(long flightDelay) {
+		return this.flightDelay = flightDelay;
 	}
 
 	public List<Passenger> getPassengerDetails() {
@@ -141,8 +171,28 @@ public class Flight {
 	}
 	
 	public void cancelAllBookings()
+<<<<<<< Updated upstream
 	{
 		
+=======
+
+	{
+		int listBookings = this.Bookingdetails.size();
+		for(int i =1 ; i<listBookings ; i++)
+		{
+			this.Bookingdetails.remove(0);
+		}
+		
+		
+	}
+	
+	public long flightDelay(Flight flight)
+	{
+		
+		 long minutesDelay = Duration.between(flight.getEstimatedArrivalTime(), flight.getArrivalTime()).toMinutes();
+		  return flight.setFlightDelay(minutesDelay);
+		 
+>>>>>>> Stashed changes
 	}
 
 	@Override

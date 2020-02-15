@@ -9,8 +9,6 @@ public class City {
 	private List<Airport> airportList;
 	
 	
-	
-	
 
 	public City(String cityName, String cityZipcode) {
 		super();
@@ -18,10 +16,12 @@ public class City {
 		this.cityZipcode = cityZipcode;
 	}
 
+
 	@Override
 	public String toString() {
-		return "City [cityName=" + cityName + ", cityZipcode=" + cityZipcode + "]";
+		return "City [cityName=" + cityName + ", cityZipcode=" + cityZipcode + "  ]";
 	}
+	
 
 	public String getCityName() {
 		return cityName;
@@ -46,7 +46,6 @@ public class City {
 	public void setAirportList(List<Airport> airportList) {
 		this.airportList = airportList;
 	}
-	
 	
 	
 	
