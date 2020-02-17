@@ -16,16 +16,20 @@ public class Main {
 	
 	static List<Passenger> passengerListGlobal ;
 	static List<Booking>    bookingListGlobal;
+	static List<Employee>  employeeListGlobal;
+	static List<City> cityListGlobal;
+	
 
 	public static void main(String[] args) {
 		
 		
-		
+		employeeListGlobal = new ArrayList<Employee>();
+		cityListGlobal = new ArrayList<City>();
 		//Cities Info
-		City c1 = new City("Montreal","CA-QUB");
-		City c2 = new City("Vancover", "CA-BC");
-		City c3 = new City("Hyderabad", "IN-AND");
-		City c4 = new City("Bangalore", "IN-KAR");
+		City c1 = new City("Montreal","CA-QUB");c1.setCityId();
+		City c2 = new City("Vancover", "CA-BC");c1.setCityId();
+		City c3 = new City("Hyderabad", "IN-AND");c1.setCityId();
+		City c4 = new City("Bangalore", "IN-KAR");c1.setCityId();
 		
 		 
 	
@@ -128,14 +132,27 @@ public class Main {
 	   
 		List<Employee>  employeeList = new ArrayList<Employee>();
 		Employee e1= new Employee();
+		e1.setEmployeeId();
 		e1.setAddress("India");
-		e1.setName("Con");
+		e1.setName("Harry Porter");
+		
 		Employee e2 = new Employee();
-		e2.setName("boby");
-		e2.setAddress("AUS");
+		e2.setEmployeeId();
+		e2.setName("Ian Maddox");
+		e2.setAddress("Australia");
+		
+		Employee e3 = new Employee();
+		e3.setEmployeeId();
+		e3.setName("Willam Henry");
+		e3.setAddress("England");
 		
 		employeeList.add(e2);
 		employeeList.add(e1);
+		
+		employeeListGlobal.add(e1);
+		employeeListGlobal.add(e2);
+		employeeListGlobal.add(e3);
+		
 		
 		f1.setEmployeeList(employeeList);
 		
@@ -201,6 +218,7 @@ public class Main {
 				System.out.println("3.Cancel All Booking");
 				System.out.println("4.Flight Delay Status");
 				System.out.println("5.Add an Employee");
+				System.out.println("6.To display items ");
 				
 				
 				Scanner scanOpt = new Scanner(System.in);
@@ -264,16 +282,19 @@ public class Main {
 					  Employee empadd = new Employee();
 					  Scanner inp = new Scanner(System.in);
 					  System.out.println("Enter the Employee name");
-					 
+					  
 					  empadd.setName(inp.nextLine());
+					  empadd.setEmployeeId();
 					  System.out.println("Enter the Employee email");
 					  empadd.setEmail(inp.nextLine());
 					  System.out.println("Enter the Employee Phone");
 					  empadd.setEmail(inp.nextLine());
 					  System.out.println("Enter the Employee Address");
 					  empadd.setEmail(inp.nextLine());
-					  
-				  
+					  employeeListGlobal.add(empadd);
+					  empadd.displayAllEmployees(employeeListGlobal);
+				  case 6:
+					  displayItems();
 				  default:
 				    // code block
 				}
@@ -282,6 +303,38 @@ public class Main {
 	}
 	
 	
+	private static void displayItems() {
+		
+		System.out.println("Please select the followig option");
+		System.out.println("1.To do display all Cities");
+		System.out.println("2.To do display all Airports");
+		System.out.println("3.To do display all Flights");
+		System.out.println("4.To do display all Employees");
+		System.out.println("5.To do display all Bookings");
+		
+		Scanner disItem = new Scanner(System.in);
+		int selectedOptionDis = disItem.nextInt();
+		switch(selectedOptionDis) {
+		  case 1:
+			  City cty = new City();
+			  cty.displayAllCities(cityListGlobal);
+		  case 2:
+			  Airport aa = new Airport();
+			  aa.displayAllAirports();
+		  case 3:
+			  Flight ff = new Flight();
+			  ff.displayAllFlights(flightListGlobal);
+		  case 4:
+			  Employee ee= new Employee();
+			  ee.displayAllEmployees(employeeListGlobal);
+		  case 5:
+			  Booking bb =new Booking();
+			  bb.displayAllBookings(bookingListGlobal);
+		
+	}
+}
+
+
 	public static void addBookingDetails(ArrayList<Flight> flights)
 	{
 		

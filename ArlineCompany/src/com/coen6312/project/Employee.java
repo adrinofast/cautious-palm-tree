@@ -4,13 +4,23 @@ import java.util.List;
 
 public class Employee extends Person{
 	
+	private static int empID = 4;
+	
 	private int employeeId;
     private  String role;
     private String Manager;
     
     private List<Flight> FlightDetails;
     
-    
+    public void displayAllEmployees(List<Employee> emplist)
+    {
+    	for(Employee e : emplist)
+    	{
+    		System.out.println("Employee Id : " +  e.getEmployeeId() + " " + "Employee Name : " + e.getName() + " " + "Employee Address : " + e.getAddress() );
+    		
+    	
+    	}
+    }
     
     
 	public List<Flight> getFlightDetails() {
@@ -34,8 +44,8 @@ public class Employee extends Person{
 
 
 
-	public void setEmployeeId(int employeeId) {
-		this.employeeId = employeeId;
+	public void setEmployeeId() {
+		this.employeeId = ++empID;
 	}
 
 

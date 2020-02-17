@@ -1,5 +1,7 @@
 package com.coen6312.project;
 
+import java.util.List;
+
 public class Booking {
 	
 	private int bookingId;
@@ -48,9 +50,18 @@ public class Booking {
 				+ flight + "] ";
 	}
 
-	
+	public void displayAllBookings(List<Booking> bookingListGlobal) {
+		for(Booking book : bookingListGlobal)
+		{
+			System.out.println("Booking Id: " + book.getBookingId() + "  " + "Booking Passenger Name: " + book.getPassnger().getName() + " " + "Booking Flight: " + book.getFlight().getFlightNumber()
+					+ " " + "Booked Seat number " + book.seatNumber + " " + "Flight Arrival: " + book.getFlight().getSourceAirport() + " " + "Flight Destination: " + book.getFlight().getDestinationAirport()
+					
+					
+					);
+		}
+		
+	}
 
-	
-	
+
 
 }

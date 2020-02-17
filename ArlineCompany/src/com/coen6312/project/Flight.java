@@ -184,6 +184,11 @@ public class Flight {
 				+ sourceAirport + ", destinationAirport=" + destinationAirport + "]  + \"/n\"+";
 	}
 
+	public void displayAllFlights(List<Flight> flightListGlobal) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 	
 	

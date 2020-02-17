@@ -10,6 +10,9 @@ public class Airport {
 	
 	
 						
+	public Airport() {
+		super();
+	}
 	public Airport(String airportName, String airportCode, City cityDetails) {
 		super();
 		this.airportName = airportName;
@@ -45,6 +48,10 @@ public class Airport {
 	public String toString() {
 		return "Airport [airportName=" + airportName + ", airportCode=" + airportCode + ", cityDetails=" + cityDetails
 				+ ", sourceFlag=" + sourceFlag + "]";
+	}
+	public void displayAllAirports() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	
