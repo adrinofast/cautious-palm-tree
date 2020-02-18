@@ -1,5 +1,13 @@
 package com.coen6312.project;
 
+
+/*
+ -----------Subitted By----------
+ Vishnu PhaniTeja Devarapu  Id: 40118286
+ Prathyusha Lngaladinne     Id: 40116307
+ 
+ */
+
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +17,13 @@ public  class AirlineComapny {
 	
 	private static AirlineComapny singleObject = null; 
 	
+	private String airlineName = "ModelDriven Airlines";
+	
+	
+	public String getAirlineName() {
+		return airlineName;
+	}
+
 	private  AirlineComapny()
 	{
 		

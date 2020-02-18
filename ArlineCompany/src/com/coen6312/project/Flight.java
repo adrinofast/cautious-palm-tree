@@ -1,5 +1,13 @@
 package com.coen6312.project;
 
+/*
+-----------Subitted By----------
+Vishnu PhaniTeja Devarapu  Id: 40118286
+Prathyusha Lngaladinne     Id: 40116307
+
+*/
+
+
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -16,6 +24,7 @@ public class Flight {
 	private LocalTime arrivalTime;
 	private String flightDuration;
 	private String fightCapacity;
+	
 	private AirlineComapny airlineBelongsto;
 
 	
@@ -185,7 +194,17 @@ public class Flight {
 	}
 
 	public void displayAllFlights(List<Flight> flightListGlobal) {
-		// TODO Auto-generated method stub
+		for(Flight fgt: flightListGlobal) 
+		{
+			System.out.println("Flight Number: " + fgt.getFlightNumber() + " " + "Flight Source Airport: " + fgt.getSourceAirport().getAirportName()
+					+ " " + "Flight Destination Airport: " + fgt.getDestinationAirport().getAirportName()
+					+ " " + "Flight Capacity: " + fgt.getFightCapacity()
+					+ " " + "Flight arvial time " + fgt.getArrivalTime()
+					+ " " + "Fligt dest time: " + fgt.getDepartureTime()
+					+ " " + "Flight Status: " + fgt.getFlightDelay() + " " + "in Minutes"
+					
+					);
+		}
 		
 	}
 

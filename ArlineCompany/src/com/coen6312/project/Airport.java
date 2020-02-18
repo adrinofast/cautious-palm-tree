@@ -1,7 +1,20 @@
 package com.coen6312.project;
 
+
+/*
+-----------Subitted By----------
+Vishnu PhaniTeja Devarapu  Id: 40118286
+Prathyusha Lngaladinne     Id: 40116307
+
+*/
+
+
+import java.util.List;
+
 public class Airport {
+	private static int  aId = 0;
 	
+	private int airportId;
 	private String airportName;
 	private String airportCode;
 	private City cityDetails;
@@ -18,6 +31,14 @@ public class Airport {
 		this.airportName = airportName;
 		this.airportCode = airportCode;
 		this.cityDetails = cityDetails;
+	}
+	
+	
+	public int getAirportId() {
+		return airportId;
+	}
+	public void setAirportId() {
+		this.airportId = ++aId;
 	}
 	public City getCityDetails() {
 		return cityDetails;
@@ -49,9 +70,13 @@ public class Airport {
 		return "Airport [airportName=" + airportName + ", airportCode=" + airportCode + ", cityDetails=" + cityDetails
 				+ ", sourceFlag=" + sourceFlag + "]";
 	}
-	public void displayAllAirports() {
-		// TODO Auto-generated method stub
+	public void displayAllAirports(List<Airport> airportList) {
 		
+		for(Airport aa :airportList )
+		{
+			System.out.println("Airport Id:" + aa.getAirportId() + " "+  "Airport Name: " + aa.getAirportName() + " " + "Airport Code: " + aa.getAirportCode() + " " 
+					  + "Aiport City: " + aa.getCityDetails().getCityName());
+		}
 	}
 	
 	

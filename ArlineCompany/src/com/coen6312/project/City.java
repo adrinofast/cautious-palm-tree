@@ -1,10 +1,19 @@
 package com.coen6312.project;
 
+/*
+-----------Subitted By----------
+Vishnu PhaniTeja Devarapu  Id: 40118286
+Prathyusha Lngaladinne     Id: 40116307
+
+*/
+
+
 import java.util.List;
 
 public class City {
 	
-	private int cityId =5;
+	private static int cId = 0;
+	private int cityId ;
 	private String cityName;
 	private String cityZipcode;
 	private List<Airport> airportList;
@@ -43,7 +52,7 @@ public class City {
 
 
 	public void setCityId() {
-		this.cityId = ++cityId;
+		this.cityId = ++cId;
 	}
 
 
