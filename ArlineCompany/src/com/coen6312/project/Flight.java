@@ -15,7 +15,7 @@ import java.util.List;
 
 public class Flight {
 	
-	
+	private  static  int numberSuffix= 1;
 	
 	private String  flightNumber;
 	private String  departureDate;
@@ -208,7 +208,17 @@ public class Flight {
 		
 	}
 
-	
+	public String generateFlightNumber(Flight flight)
+	{
+		String flightNumberPrefix = null;
+		 flightNumberPrefix = flight.getSourceAirport().getAirportCode().substring(0, 2) + flight.getDestinationAirport().getAirportCode().substring(0, 2);
+		 String suffix  = Integer.toString(++numberSuffix).format("%02d", numberSuffix);
+		 String flightNumber = flightNumberPrefix+suffix;
+		 System.out.println("the fial number is"  + " " + flightNumber);
+		 
+		return flightNumber;
+		
+	}
 	
 	
 	

@@ -108,10 +108,11 @@ public class Main {
 		// FLight Details
 		
 		Flight f1 = new Flight();
-		f1.setFlightNumber("A123");
+		
 		f1.setSourceAirport(a1);
 		f1.setFightCapacity("200");
 		f1.setDestinationAirport(a3);
+		f1.setFlightNumber(f1.generateFlightNumber(f1));
 		LocalTime time =  LocalTime.now();
 		f1.setDepartureTime(time);
 		
@@ -123,12 +124,13 @@ public class Main {
 	   
 		Flight f2 = new Flight();
 		
-		f2.setFlightNumber("A456");
+		
 		f2.setSourceAirport(a2);
 		f2.setFightCapacity("400");
 		LocalTime time1 =  LocalTime.now();
 		f2.setDepartureTime(time1);
 		f2.setDestinationAirport(a4);
+		f2.setFlightNumber(f2.generateFlightNumber(f2));
 	   LocalDate dt1 = LocalDate.now();
 //	   LocalDateTime plusDays1 = LocalDateTime.from(dt1.atStartOfDay()).plusDays(1);
 //	   
@@ -327,8 +329,10 @@ public class Main {
 	private static void addFlight() {
 		Flight ffAdd = new Flight();
 		Scanner addFliIn = new Scanner(System.in);
-		System.out.println("Entet the Flight NUmber");;
-		ffAdd.setFlightNumber(addFliIn.nextLine());
+		
+//		System.out.println("Entet the Flight NUmber");;
+//		ffAdd.setFlightNumber(addFliIn.nextLine());
+		
 		System.out.println("Entet maximum flight capacity");
 		ffAdd.setFightCapacity(addFliIn.nextLine());
 		System.out.println("Please select below Source Airport");
@@ -360,6 +364,7 @@ public class Main {
 			}
 		});
 		
+		ffAdd.generateFlightNumber(ffAdd);
 		System.out.println("Please select below Employee as a crew");
 		Employee ee = new Employee();
 		List <Employee> emLis = new ArrayList<Employee>();
