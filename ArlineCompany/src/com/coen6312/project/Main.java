@@ -84,7 +84,7 @@ public class Main {
 				
 				 pass1.setName("Adrino Fast");
 				 pass1.setAddress("Sydney");	
-				passList.add(pass1);
+				 passList.add(pass1);
 		
 				Passenger pass2 = new Passenger();
 				 List<Passenger> passList2 = new ArrayList<Passenger>();
@@ -105,16 +105,17 @@ public class Main {
 		
 				
 				
-		// FLight Details
+		// FLight Details+
 		
 		Flight f1 = new Flight();
 		
 		f1.setSourceAirport(a1);
-		f1.setFightCapacity("200");
+		f1.setFightCapacity("52");
 		f1.setDestinationAirport(a3);
 		f1.setFlightNumber(f1.generateFlightNumber(f1));
 		LocalTime time =  LocalTime.now();
 		f1.setDepartureTime(time);
+		f1.setArrangment(f1.generateSeatingArrangement());
 		
 	   LocalDate dt = LocalDate.now();
 	   //LocalDateTime plusDays = LocalDateTime.from(dt.atStartOfDay()).plusDays(1);
@@ -126,12 +127,13 @@ public class Main {
 		
 		
 		f2.setSourceAirport(a2);
-		f2.setFightCapacity("400");
+		f2.setFightCapacity("78");
 		LocalTime time1 =  LocalTime.now();
 		f2.setDepartureTime(time1);
 		f2.setDestinationAirport(a4);
 		f2.setFlightNumber(f2.generateFlightNumber(f2));
 	   LocalDate dt1 = LocalDate.now();
+	   f2.setArrangment(f2.generateSeatingArrangement());
 //	   LocalDateTime plusDays1 = LocalDateTime.from(dt1.atStartOfDay()).plusDays(1);
 //	   
 //	   System.out.println(plusDays1);
@@ -175,25 +177,34 @@ public class Main {
 		
 		
 		// Booking Details
+		List<Booking> bookingList = new ArrayList<Booking>();
+		List<Booking> bookingList2 = new ArrayList<Booking>();
 				Booking b1 = new Booking();
 				b1.setBookingId(1);
 				b1.setPassnger(pass1);
 				b1.setFlight(f1);
-				b1.setSeatNumber("D4");
 				
+				f1.setBookingdetails(bookingList);
+				b1.setSeatNumber(seatAllotment(f1));
+				bookingList.add(b1);
 				
 				Booking b2 = new Booking();
 				b2.setBookingId(2);
 				b2.setPassnger(pass2);
 				b2.setFlight(f1);
-				b2.setSeatNumber("C4");
 				
+				f1.setBookingdetails(bookingList);
+				b2.setSeatNumber(seatAllotment(f1));
+				bookingList.add(b2);
 				
 				Booking b3 = new Booking();
 				b3.setBookingId(3);
 				b3.setPassnger(pass3);
 				b3.setFlight(f2);
-				b3.setSeatNumber("A4");
+				
+				f2.setBookingdetails(bookingList2);
+				b3.setSeatNumber(seatAllotment(f2));
+				bookingList2.add(b3);
 				
 				bookingListGlobal = new ArrayList<Booking>();
 				
@@ -203,18 +214,18 @@ public class Main {
 				
 				
 				
-				List<Booking> bookingList = new ArrayList<Booking>();
-				bookingList.add(b1);
-				bookingList.add(b2);
+				//List<Booking> bookingList = new ArrayList<Booking>();
+				//bookingList.add(b1);
+				//bookingList.add(b2);
 				
-				List<Booking> bookingList2 = new ArrayList<Booking>();
-				bookingList2.add(b3);
+//				List<Booking> bookingList2 = new ArrayList<Booking>();
+				//bookingList2.add(b3);
 				
 				//Adding booking to flight
-				f1.setBookingdetails(bookingList);
+				//f1.setBookingdetails(bookingList);
 				//f1.addBooking(b3);
 				
-				f2.setBookingdetails(bookingList2);
+				//f2.setBookingdetails(bookingList2);
 				
 				
 				//Adding booking to passenger
@@ -224,10 +235,7 @@ public class Main {
 				pass3.setBookingDetails(b3);
 				//System.out.println(flightListGlobal.toString());
 				
-		        
-			
-				
-				System.out.println("***************-------------**********-----------**************--------");
+		        System.out.println("***************-------------**********-----------**************--------");
 				printDetails();
 				optionMethod();
 				
@@ -335,6 +343,7 @@ public class Main {
 		
 		System.out.println("Entet maximum flight capacity");
 		ffAdd.setFightCapacity(addFliIn.nextLine());
+		ffAdd.generateSeatingArrangement();
 		System.out.println("Please select below Source Airport");
 		Airport aaSou = new Airport();
 		aaSou.displayAllAirports(airportListGlobal);
@@ -490,7 +499,7 @@ public class Main {
 
 	public static void addBookingDetails(ArrayList<Flight> flights)
 	{
-		
+		String alreadyBooked = "false";
 		System.out.println("The Flights availble are below");
 		Scanner flightDet = new Scanner(System.in);
 		Flight flightforBooking = null;
@@ -517,20 +526,34 @@ public class Main {
 		Booking B1 = new Booking();
 		B1.setBookingId(01);
 			B1.setPassnger(addingPassengerDetails);
+			flightforBooking.getBookingdetails().forEach(b->{
+				if(b.getPassnger().equals(B1.getPassnger()))
+				{
+					 alreadyBooked = "true";
+					System.out.println("You have already booking for this flight");
+					
+				}
+			});
+			
 		   B1.setFlight(flightforBooking);
 		
 		   
 		   System.out.println("Pleaase Confim the Booking by typing Y character");
-		   if(flightDet.nextLine().equals("Y"))
+		   if(flightDet.nextLine().equals("Y") && (alreadyBooked == "false"))
 		   {
 			   
-			   B1.setSeatNumber("K5");
+//			  int noOfBookings=  flightforBooking.getBookingdetails().size();
+//			  ArrayList<String> arrangmentBook = flightforBooking.getArrangment();
 			   
+			   B1.setSeatNumber(seatAllotment(flightforBooking));
+			   System.out.println("The Seat Number is " + " " + B1.getSeatNumber());
+			  
 			   flightforBooking.addBooking(B1);
+			   
 			   addingPassengerDetails.setBookingDetails(B1);
-			   System.out.println("i am here at 1");
+			  
 			   passengerListGlobal.add(addingPassengerDetails);
-			   System.out.println("i am here at 2");
+			   
 			  // flightListGlobal.add(flightforBooking);
 			   System.out.println("i a here at 3");
 			   bookingListGlobal.add(B1);
@@ -686,6 +709,13 @@ public class Main {
 		
 	}
   
-	
+	private static String seatAllotment(Flight f)
+	{
+		int noOfBookings=  f.getBookingdetails().size();
+		ArrayList<String> arrangmentBook = f.getArrangment();
+		 String string = arrangmentBook.get(noOfBookings);
+		 System.out.println("the seat allotment is " + " " +string);
+		 return string;
+	}
 
 }

@@ -17,7 +17,7 @@ public class Employee extends Person{
 	
 	private int employeeId;
     private  String role;
-    private String Manager;
+    
     
     private List<Flight> FlightDetails;
     

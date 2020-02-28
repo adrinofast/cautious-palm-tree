@@ -25,6 +25,9 @@ public class Flight {
 	private String flightDuration;
 	private String fightCapacity;
 	
+	private ArrayList<String> arrangment ;
+	
+	
 	private AirlineComapny airlineBelongsto;
 
 	
@@ -41,6 +44,21 @@ public class Flight {
 	private Airport destinationAirport;
 	
 	
+	public ArrayList<String> getArrangment() {
+		return arrangment;
+	}
+
+	public void setArrangment(ArrayList<String> arrangment) {
+		this.arrangment = arrangment;
+	}
+
+	public AirlineComapny getAirlineBelongsto() {
+		return airlineBelongsto;
+	}
+
+	public void setAirlineBelongsto(AirlineComapny airlineBelongsto) {
+		this.airlineBelongsto = airlineBelongsto;
+	}
 
 	public List<Booking> getBookingdetails() {
 		return Bookingdetails;
@@ -221,7 +239,47 @@ public class Flight {
 	}
 	
 	
-	
+	public ArrayList<String> generateSeatingArrangement()
+	{
+		int cap = Integer.parseInt(this.getFightCapacity());
+		int capPat = cap/26;
+		int capRem = cap%26;
+		System.out.println("the cappat is " + " "  +capPat);
+		System.out.println("the caprem is " + " "  +capRem);
+		
+		String strr;
+		ArrayList<String> arrange =  new ArrayList<String>();
+		ArrayList<Integer> numarr = new ArrayList<Integer>();
+		
+		int a =65;
+		
+		for(int i =0;i<capPat;i++) 
+		{
+			++a;
+			numarr.add(a);
+		}
+		for(int j=0;j<numarr.size(); j++)
+		{
+			int c = 65;
+			c = c+j;
+			char ch =  (char)c;
+			
+			 strr = Character.toString(ch);
+			
+			for(int k =1 ;k<=26 ; k++)
+			{
+				String seatsArr = null;
+				
+				String sufffix = Integer.toString(k).format("%02d", k);
+				String finalar = strr+sufffix;
+				arrange.add(finalar);
+			}
+			
+		}
+		
+		System.out.println(arrange.toString());
+		return arrange;
+	}
 	
 	
 
