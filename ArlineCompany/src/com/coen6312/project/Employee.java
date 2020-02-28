@@ -18,7 +18,7 @@ public class Employee extends Person{
 	private int employeeId;
     private  String role;
     
-    System.out.ptint("sdfgyu");
+    
     private List<Flight> FlightDetails;
     
     public void displayAllEmployees(List<Employee> emplist)
@@ -72,25 +72,8 @@ public class Employee extends Person{
 	}
 
 
-
-
-	public String getManager() {
-		return Manager;
-	}
-
-
-
-
-	public void setManager(String manager) {
-		Manager = manager;
-	}
-
-
-
-
-	@Override
 	public String toString() {
-		return "Employee [employeeId=" + employeeId + ", role=" + role + ", Manager=" + Manager + ", name=" + name
+		return "Employee [employeeId=" + employeeId + ", role=" + role +  ", name=" + name
 				+ ", address=" + address + ", telephone=" + telephone + ", email=" + email + "]";
 	}
     

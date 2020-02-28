@@ -182,29 +182,44 @@ public class Main {
 				Booking b1 = new Booking();
 				b1.setBookingId(1);
 				b1.setPassnger(pass1);
-				b1.setFlight(f1);
-				
-				f1.setBookingdetails(bookingList);
-				b1.setSeatNumber(seatAllotment(f1));
-				bookingList.add(b1);
+				int bst= checkBooking(f1,b1);
+				if(bst == 0) 
+				{
+					b1.setFlight(f1);
+					
+					f1.setBookingdetails(bookingList);
+					b1.setSeatNumber(seatAllotment(f1));
+					bookingList.add(b1);
+					
+				}
 				
 				Booking b2 = new Booking();
 				b2.setBookingId(2);
 				b2.setPassnger(pass2);
-				b2.setFlight(f1);
+				int bst2= checkBooking(f1,b2);
+				if(bst2 == 0)
+				{
+					b2.setFlight(f1);
+					
+					f1.setBookingdetails(bookingList);
+					b2.setSeatNumber(seatAllotment(f1));
+					bookingList.add(b2);
+				}
 				
-				f1.setBookingdetails(bookingList);
-				b2.setSeatNumber(seatAllotment(f1));
-				bookingList.add(b2);
 				
 				Booking b3 = new Booking();
 				b3.setBookingId(3);
 				b3.setPassnger(pass3);
-				b3.setFlight(f2);
+				int bst3 = checkBooking(f2,b3);
+				if(bst3== 0)
+				{
+					b3.setFlight(f2);
+					
+					f2.setBookingdetails(bookingList2);
+					b3.setSeatNumber(seatAllotment(f2));
+					bookingList2.add(b3);
+				}
 				
-				f2.setBookingdetails(bookingList2);
-				b3.setSeatNumber(seatAllotment(f2));
-				bookingList2.add(b3);
 				
 				bookingListGlobal = new ArrayList<Booking>();
 				
@@ -499,7 +514,7 @@ public class Main {
 
 	public static void addBookingDetails(ArrayList<Flight> flights)
 	{
-		String alreadyBooked = "false";
+		int alreadyBooked ;
 		System.out.println("The Flights availble are below");
 		Scanner flightDet = new Scanner(System.in);
 		Flight flightforBooking = null;
@@ -526,20 +541,12 @@ public class Main {
 		Booking B1 = new Booking();
 		B1.setBookingId(01);
 			B1.setPassnger(addingPassengerDetails);
-			flightforBooking.getBookingdetails().forEach(b->{
-				if(b.getPassnger().equals(B1.getPassnger()))
-				{
-					 alreadyBooked = "true";
-					System.out.println("You have already booking for this flight");
-					
-				}
-			});
-			
+			alreadyBooked=checkBooking(flightforBooking, B1);
 		   B1.setFlight(flightforBooking);
 		
 		   
 		   System.out.println("Pleaase Confim the Booking by typing Y character");
-		   if(flightDet.nextLine().equals("Y") && (alreadyBooked == "false"))
+		   if(flightDet.nextLine().equals("Y") && (alreadyBooked == 0))
 		   {
 			   
 //			  int noOfBookings=  flightforBooking.getBookingdetails().size();
@@ -717,5 +724,22 @@ public class Main {
 		 System.out.println("the seat allotment is " + " " +string);
 		 return string;
 	}
+	private static int checkBooking(Flight f, Booking bookng)
+	{
+		int status = 0;
+		List<Booking> bookingdetails = f.getBookingdetails();
+		for(Booking bb : bookingdetails)
+		{
+			if(bb.getPassnger().equals(bookng.getPassnger()))
+			{
+				status=1;
+			System.out.println("You have already booking for this flight");
+			}
+		}
+		
+	return status;
+	}
 
+
+	
 }
