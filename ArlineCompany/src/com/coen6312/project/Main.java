@@ -1,5 +1,7 @@
 package com.coen6312.project;
 
+import java.time.Duration;
+
 /*
 -----------Subitted By----------
 Vishnu PhaniTeja Devarapu  Id: 40118286
@@ -154,16 +156,32 @@ public class Main {
 		e1.setEmployeeId();
 		e1.setAddress("India");
 		e1.setName("Harry Porter");
+		e1.setRole("Crew");
 		
 		Employee e2 = new Employee();
 		e2.setEmployeeId();
 		e2.setName("Ian Maddox");
 		e2.setAddress("Australia");
+		e2.setRole("Crew");
 		
 		Employee e3 = new Employee();
 		e3.setEmployeeId();
 		e3.setName("Willam Henry");
 		e3.setAddress("England");
+		e3.setRole("Crew");
+		
+		Employee e4 = new Employee();
+		e4.setEmployeeId();
+		e4.setName("Alfred John");
+		e4.setAddress("England");
+		e4.setRole("Pilot");
+		
+		
+		Employee e5 = new Employee();
+		e5.setEmployeeId();
+		e5.setName("Telsa Henry");
+		e5.setAddress("Belgium");
+		e5.setRole("Pilot");
 		
 		employeeList.add(e2);
 		employeeList.add(e1);
@@ -171,7 +189,8 @@ public class Main {
 		employeeListGlobal.add(e1);
 		employeeListGlobal.add(e2);
 		employeeListGlobal.add(e3);
-		
+		employeeListGlobal.add(e4);
+		employeeListGlobal.add(e5);
 		
 		f1.setEmployeeList(employeeList);
 		
@@ -389,30 +408,19 @@ public class Main {
 		});
 		
 		ffAdd.generateFlightNumber(ffAdd);
-		System.out.println("Please select below Employee as a crew");
+//		System.out.println("Please select below Employee as a crew");
 		Employee ee = new Employee();
 		List <Employee> emLis = new ArrayList<Employee>();
-		ee.displayAllEmployees(employeeListGlobal);
-		int empSele = addFliIn.nextInt();
-		
-		employeeListGlobal.forEach(e-> {
-			if(e.getEmployeeId() == empSele)
-			{
-				emLis.add(e);
-			}
-		});
-		
-		System.out.println("Plese select another Employee");		
-		ee.displayAllEmployees(employeeListGlobal);
-		int empSele2 = addFliIn.nextInt();
-		
-		employeeListGlobal.forEach(e-> {
-			if(e.getEmployeeId() == empSele2)
-			{
-				emLis.add(e);
-			}
-		});
-		ffAdd.setEmployeeList(emLis);
+//		ee.displayAllEmployees(employeeListGlobal);
+//		int empSele = addFliIn.nextInt();
+//		
+//		employeeListGlobal.forEach(e-> {
+//			if(e.getEmployeeId() == empSele)
+//			{
+//				emLis.add(e);
+//			}
+//		});
+	
 		ffAdd.setDepartureTime(LocalTime.now());
 		ffAdd.setArrivalTime(LocalTime.now().plusHours(8));
 		System.out.println("Enter 1 for estimated arrival time as arrival time or Press 2");
@@ -425,6 +433,148 @@ public class Main {
 			System.out.println("please enter estimated arrival time in hours after departure of flight");
 			ffAdd.setEstimatedArrivalTime(ffAdd.getDepartureTime().plusHours(addFliIn.nextInt()));
 		}
+		
+		System.out.println("Plese select another Employee");
+		long minutes = Duration.between(ffAdd.getArrivalTime(), ffAdd.getDepartureTime()).toMinutes();
+		
+		if(minutes<180)
+		{
+			
+			System.out.println("You are allowed to select One Pilot and 2 Crew Members");
+			ArrayList<Employee> temp = new ArrayList<Employee>();
+			temp.addAll(employeeListGlobal);
+			
+			System.out.println("Please select the pilot from the list");
+			ArrayList<Employee> pilotList = new ArrayList<Employee>();
+			ArrayList<Employee> employeList = new ArrayList<Employee>();
+			temp.forEach(pilo->{
+				if(pilo.getRole().equals("Pilot"))
+				{
+					
+					pilotList.add(pilo);
+					
+				}
+			});
+			ee.displayAllEmployees(pilotList);
+			int empSelePi = addFliIn.nextInt();
+			
+			employeeListGlobal.forEach(e-> {
+				if(e.getEmployeeId() == empSelePi)
+				{
+					emLis.add(e);
+					temp.remove(e);
+					
+				}
+			});
+			
+			temp.forEach(crew->{
+				if(crew.getRole().equals("Crew"))
+				{
+					
+					employeList.add(crew);
+					
+				}
+			});
+	
+			for(int i=1; i<3;i++)
+			{
+				System.out.println("Please select below Employee as a crew");
+				
+				ee.displayAllEmployees(employeList);
+				int empSele2 = addFliIn.nextInt();
+				
+				employeeListGlobal.forEach(e-> {
+					if(e.getEmployeeId() == empSele2)
+					{
+						emLis.add(e);
+						employeList.remove(e);
+						
+					}
+				});
+				
+			}
+			ffAdd.setEmployeeList(emLis);
+		}
+		else
+		{
+			System.out.println("You are allowed to select One Pilot and 4 Crew Members");
+			ArrayList<Employee> temp = new ArrayList<Employee>();
+			temp.addAll(employeeListGlobal);
+			System.out.println("Please select the pilot from the list");
+			ArrayList<Employee> pilotList = new ArrayList<Employee>();
+			ArrayList<Employee>  employeList = new ArrayList<Employee>();
+			temp.forEach(pilo->{
+				if(pilo.getRole().equals("Pilot"))
+				{
+					System.out.println(pilo.toString());
+					pilotList.add(pilo);
+					;
+				}
+			});
+			ee.displayAllEmployees(pilotList);
+			int empSelePi = addFliIn.nextInt();
+			
+			employeeListGlobal.forEach(e-> {
+				if(e.getEmployeeId() == empSelePi)
+				{
+					emLis.add(e);
+					temp.remove(e);
+					
+				}
+			});
+			
+			temp.forEach(crew->{
+				if(crew.getRole().equals("Crew"))
+				{
+					
+					employeList.add(crew);
+					
+				}
+			});
+			
+	
+			for(int i=1; i<4;i++)
+			{
+				System.out.println("Please select below Employee as a crew");
+				ee.displayAllEmployees(employeList);
+				int empSele2 = addFliIn.nextInt();
+				
+				employeeListGlobal.forEach(e-> {
+					if(e.getEmployeeId() == empSele2)
+					{
+						emLis.add(e);
+						employeList.remove(e);
+					}
+				});
+				
+			}
+			ffAdd.setEmployeeList(emLis);
+			System.out.println("You can still add 2 crew members --PRESS YES or PRESS NO ");
+			//Scanner scemp = new Scanner(System.in);
+			String sta = addFliIn.nextLine();
+			if(sta == "YES")
+			{
+				System.out.println("Please select from the below list");
+				for(int i=1; i<5;i++)
+				{
+					System.out.println("Please select below Employee as a crew");
+					ee.displayAllEmployees(employeList);
+					int empSele2 = addFliIn.nextInt();
+					
+					employeeListGlobal.forEach(e-> {
+						if(e.getEmployeeId() == empSele2)
+						{
+							emLis.add(e);
+						}
+					});
+					
+				}
+			}
+				
+			
+		}
+		
+		
 		flightListGlobal.add(ffAdd);
 		System.out.println("Flight has been added to Service");
 		printDetails();

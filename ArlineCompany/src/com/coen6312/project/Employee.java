@@ -25,7 +25,7 @@ public class Employee extends Person{
     {
     	for(Employee e : emplist)
     	{
-    		System.out.println("Employee Id : " +  e.getEmployeeId() + " " + "Employee Name : " + e.getName() + " " + "Employee Address : " + e.getAddress() );
+    		System.out.println("Employee Id : " +  e.getEmployeeId() + " " + "Employee Name : " + e.getName() + " " + "Employee Address : " + e.getAddress() + " " + "Employee Role : " + e.getRole() );
     		
     	
     	}
@@ -51,21 +51,13 @@ public class Employee extends Person{
 	}
 
 
-
-
 	public void setEmployeeId() {
 		this.employeeId = ++empID;
 	}
 
-
-
-
 	public String getRole() {
 		return role;
 	}
-
-
-
 
 	public void setRole(String role) {
 		this.role = role;
