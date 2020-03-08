@@ -45,6 +45,16 @@ public class Flight {
 	private Airport destinationAirport;
 	
 	
+	
+	
+	public String getFlightState() {
+		return flightState;
+	}
+
+	public void setFlightState(String flightState) {
+		this.flightState = flightState;
+	}
+
 	public ArrayList<String> getArrangment() {
 		return arrangment;
 	}
