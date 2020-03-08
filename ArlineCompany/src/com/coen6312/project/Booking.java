@@ -1,6 +1,8 @@
 package com.coen6312.project;
 
 
+import java.util.ArrayList;
+
 /*
 -----------Subitted By----------
 Vishnu PhaniTeja Devarapu  Id: 40118286
@@ -69,7 +71,38 @@ public class Booking {
 		}
 		
 	}
-
+	
+	public int checkBooking(Flight f, Booking bookng)
+	{
+		int status = 0;
+		int count = f.getBookingdetails().size();
+		if(count >1)
+		{
+			List<Booking> bookingdetails = f.getBookingdetails();
+			
+			for(Booking bb : bookingdetails)
+			{
+			
+				if((bb.getPassnger().getName().equals(bookng.getPassnger().getName())) &&(bb.getPassnger().getTelephone().equals(bookng.getPassnger().getTelephone())))
+				{
+					status=1;
+				System.out.println("You have already booking for this flight !! You CANNOT book" );
+				break;
+				}
+			}
+		}
+		
+	return status;
+	}
+	
+	public  String seatAllotment(Flight f)
+	{
+		int noOfBookings=  f.getBookingdetails().size();
+		ArrayList<String> arrangmentBook = f.getArrangment();
+		 String string = arrangmentBook.get(noOfBookings);
+		 System.out.println("the seat allotment is " + " " +string);
+		 return string;
+	}
 
 
 }

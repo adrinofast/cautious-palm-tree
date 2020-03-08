@@ -16,6 +16,7 @@ import java.util.List;
 public class Flight {
 	
 	private  static  int numberSuffix= 1;
+	private String flightState = "PLANNED";
 	
 	private String  flightNumber;
 	private String  departureDate;
@@ -96,8 +97,9 @@ public class Flight {
 		return flightNumber;
 	}
 
-	public void setFlightNumber(String flightNumber) {
-		this.flightNumber = flightNumber;
+	public void setFlightNumber() {
+		String generateFlightNumber = this.generateFlightNumber();
+		this.flightNumber = generateFlightNumber;
 	}
 
 	public String getDepartureDate() {
@@ -170,24 +172,61 @@ public class Flight {
 	
 	public void addBooking(Booking b)
 	{
-		this.Bookingdetails.add(b);
-		System.out.println(this.Bookingdetails.toString());
+		int bookingExist =0;
+		for(Booking bbb : this.Bookingdetails)
+		{
+			if((bbb.getFlight().getFlightNumber() == b.getFlight().getFlightNumber())&&(bbb.getPassnger().getName() == b.getPassnger().getName()))
+			{
+				bookingExist =1;
+				break;
+			}
+		}
+		
+		if(bookingExist==1)
+		{
+			this.Bookingdetails.add(b);
+		}
+		
+		
 	}
 	
 	public void cancelBooking(Booking b)
 	{
-		int indexOf = this.Bookingdetails.indexOf(b);
-		System.out.println("the index is " + " " + indexOf);
-		this.Bookingdetails.remove(indexOf);
+		int size  = Bookingdetails.size();
+		Bookingdetails.forEach(bd->{
+			if(bd.equals(b))
+			{
+				int indexOf = this.Bookingdetails.indexOf(b);
+				System.out.println("the index is " + " " + indexOf);
+				this.Bookingdetails.remove(indexOf);
+			}
+		});
+		
+		if(size > Bookingdetails.size() )
+		{
+			System.out.println("Sucessfully canxcelled the booking");
+		}
+		else
+		{
+			System.out.println("You have NO Booking avaible to cancel");
+		}
+		
 	}
 	
 	public void cancelAllBookings()
 
 	{
-		int listBookings = this.Bookingdetails.size();
-		for(int i =1 ; i<listBookings ; i++)
+		
+		if(Bookingdetails.size() > 0)
 		{
-			this.Bookingdetails.remove(0);
+			int listBookings = this.Bookingdetails.size();
+			for(int i =1 ; i<listBookings ; i++)
+			{
+				this.Bookingdetails.remove(0);
+			}
+			
+			
+			  
 		}
 		
 		
@@ -226,10 +265,10 @@ public class Flight {
 		
 	}
 
-	public String generateFlightNumber(Flight flight)
+	public String generateFlightNumber()
 	{
 		String flightNumberPrefix = null;
-		 flightNumberPrefix = flight.getSourceAirport().getAirportCode().substring(0, 2) + flight.getDestinationAirport().getAirportCode().substring(0, 2);
+		 flightNumberPrefix = this.getSourceAirport().getAirportCode().substring(0, 2) + this.getDestinationAirport().getAirportCode().substring(0, 2);
 		 String suffix  = Integer.toString(++numberSuffix).format("%02d", numberSuffix);
 		 String flightNumber = flightNumberPrefix+suffix;
 		 System.out.println("the fial number is"  + " " + flightNumber);

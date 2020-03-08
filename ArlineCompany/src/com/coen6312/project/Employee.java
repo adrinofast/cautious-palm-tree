@@ -36,20 +36,13 @@ public class Employee extends Person{
 		return FlightDetails;
 	}
 
-
-
-
 	public void setFlightDetails(List<Flight> flightDetails) {
 		FlightDetails = flightDetails;
 	}
 
-
-
-
 	public int getEmployeeId() {
 		return employeeId;
 	}
-
 
 	public void setEmployeeId() {
 		this.employeeId = ++empID;
@@ -63,15 +56,14 @@ public class Employee extends Person{
 		this.role = role;
 	}
 
-
 	public String toString() {
 		return "Employee [employeeId=" + employeeId + ", role=" + role +  ", name=" + name
 				+ ", address=" + address + ", telephone=" + telephone + ", email=" + email + "]";
 	}
     
-    
-    
-	
-	
+   public void employeeDistribution(Flight flight)
+   {
+	   
+   }
 
 }
