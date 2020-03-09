@@ -20,7 +20,7 @@ public class Booking {
 	private Flight flight;
 	
 	
-	
+	private String bookingState = "INTIATED";
 
 	public int getBookingId() {
 		return bookingId;
@@ -52,6 +52,16 @@ public class Booking {
 
 	public void setSeatNumber(String seatNumber) {
 		this.seatNumber = seatNumber;
+	}
+	
+	
+
+	public String getBookingState() {
+		return bookingState;
+	}
+
+	public void setBookingState(String bookingState) {
+		this.bookingState = bookingState;
 	}
 
 	@Override

@@ -16,6 +16,8 @@ import java.util.List;
 public class Flight {
 	
 	private  static  int numberSuffix= 1;
+	private static ArrayList<Booking> cancelBookingList = new ArrayList<Booking>();
+	
 	private String flightState = "PLANNED";
 	
 	private String  flightNumber;
@@ -182,26 +184,41 @@ public class Flight {
 	
 	public void addBooking(Booking b)
 	{
-		int bookingExist =0;
-		for(Booking bbb : this.Bookingdetails)
+		if(this.getFlightState().equals("SCHEDULED"))
 		{
-			if((bbb.getFlight().getFlightNumber() == b.getFlight().getFlightNumber())&&(bbb.getPassnger().getName() == b.getPassnger().getName()))
+			int bookingExist =0;
+			for(Booking bbb : this.Bookingdetails)
 			{
-				bookingExist =1;
-				break;
+				if((bbb.getFlight().getFlightNumber() == b.getFlight().getFlightNumber())&&(bbb.getPassnger().getName() == b.getPassnger().getName()))
+				{
+					bookingExist =1;
+					break;
+				}
 			}
-		}
+			
+			if(bookingExist==1)
+			{
+				this.Bookingdetails.add(b);
+			}
+			
+			
+		}	
 		
-		if(bookingExist==1)
-		{
-			this.Bookingdetails.add(b);
-		}
-		
-		
+	else if(this.getFlightState().equals("PLANNED"))
+	{
+		System.out.println("SORRY !! -- The flight is not yet Scheduled");
 	}
+	else if(this.getFlightState().equals("INTRIP"))
+	{
+		System.out.println("The flight is already departed !! You cannot Book NOW");
+	}
+	
+	}	
 	
 	public void cancelBooking(Booking b)
 	{
+		b.setBookingState("CANCELLED");
+		cancelBookingList.add(b);
 		int size  = Bookingdetails.size();
 		Bookingdetails.forEach(bd->{
 			if(bd.equals(b))
@@ -230,14 +247,15 @@ public class Flight {
 		if(Bookingdetails.size() > 0)
 		{
 			int listBookings = this.Bookingdetails.size();
-			for(int i =1 ; i<listBookings ; i++)
+			for(int i =0 ; i<listBookings ; i++)
 			{
-				this.Bookingdetails.remove(0);
+				Booking b = this.Bookingdetails.get(i);
+				b.setBookingState("CANCELLED");
+				cancelBookingList.add(b);
+				this.Bookingdetails.remove(i);
 			}
-			
-			
-			  
 		}
+		this.setFlightState("CANCELLED");
 		
 		
 	}

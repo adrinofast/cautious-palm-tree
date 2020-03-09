@@ -119,6 +119,7 @@ public class Main {
 		f1.setFlightNumber();
 		LocalTime time =  LocalTime.now();
 		f1.setDepartureTime(time);
+		f1.setFlightState("SCHEDULED");
 		f1.setArrangment(f1.generateSeatingArrangement());
 		
 	   LocalDate dt = LocalDate.now();
@@ -137,18 +138,25 @@ public class Main {
 		f2.setDestinationAirport(a4);
 		f2.setFlightNumber();
 	   LocalDate dt1 = LocalDate.now();
+	   f2.setFlightState("SCHEDULED");
 	   f2.setArrangment(f2.generateSeatingArrangement());
-//	   LocalDateTime plusDays1 = LocalDateTime.from(dt1.atStartOfDay()).plusDays(1);
-//	   
-//	   System.out.println(plusDays1);
-	   
 	   f2.setArrivalTime(LocalTime.now().plusHours(5));;
 	   f2.setDestinationAirport(a5);
+	   
+	   Flight f3 = new Flight();
+	   f3.setSourceAirport(a5);
+	   f3.setFightCapacity("52");
+	   LocalTime time2 = LocalTime.now();
+	   f3.setDestinationAirport(a2);
+	   f3.setFlightNumber();
+	   f3.setArrangment(f3.generateSeatingArrangement());
+	   
 	   
 	   
 	   flightListGlobal = new ArrayList<Flight>();
 	   flightListGlobal.add(f1);
 	   flightListGlobal.add(f2);
+	   flightListGlobal.add(f3);
 
 		
 		//Employee or Crew Details
@@ -224,6 +232,7 @@ public class Main {
 					
 					f1.setBookingdetails(bookingList);
 					b1.setSeatNumber(b1.seatAllotment(f1));
+					b1.setBookingState("BOOKED");
 					bookingList.add(b1);
 					
 				}
@@ -238,7 +247,9 @@ public class Main {
 					
 					f1.setBookingdetails(bookingList);
 					b2.setSeatNumber(b2.seatAllotment(f1));
+					b2.setBookingState("BOOKED");
 					bookingList.add(b2);
+					
 				}
 				
 				
@@ -252,6 +263,7 @@ public class Main {
 					
 					f2.setBookingdetails(bookingList2);
 					b3.setSeatNumber(b3.seatAllotment(f2));
+					b3.setBookingState("BOOKED");
 					bookingList2.add(b3);
 				}
 				
@@ -677,44 +689,46 @@ public class Main {
 				
 		}
 		
-		Passenger addingPassengerDetails = addingPassengerDetails();
-		
-		Booking B1 = new Booking();
-		B1.setBookingId(01);
-			B1.setPassnger(addingPassengerDetails);
-			alreadyBooked=B1.checkBooking(flightforBooking, B1);
-		   B1.setFlight(flightforBooking);
-		
-		   if(alreadyBooked == 0)
-		   {
-			   System.out.println("Pleaase Confim the Booking by typing Y character");
-		   }
-		   
-		   
-		   if(flightDet.nextLine().equals("Y") && (alreadyBooked == 0))
-		   {
+		if(flightforBooking.getBookingdetails().size() == Integer.parseInt(flightforBooking.getFightCapacity()))
+			
+		{
+			Passenger addingPassengerDetails = addingPassengerDetails();
+			
+			Booking B1 = new Booking();
+			B1.setBookingId(01);
+				B1.setPassnger(addingPassengerDetails);
+				alreadyBooked=B1.checkBooking(flightforBooking, B1);
+			   B1.setFlight(flightforBooking);
+			
+			   if(alreadyBooked == 0)
+			   {
+				   System.out.println("Pleaase Confim the Booking by typing Y character");
+			   }
+			   
+			   
+			   if(flightDet.nextLine().equals("Y") && (alreadyBooked == 0))
+			   {
 
-			   B1.setSeatNumber(seatAllotment(flightforBooking));
-			   System.out.println("The Seat Number is " + " " + B1.getSeatNumber());
-			  
-			   flightforBooking.addBooking(B1);
-			   
-			   addingPassengerDetails.setBookingDetails(B1);
-			  
-			   passengerListGlobal.add(addingPassengerDetails);
-			   
-			  // flightListGlobal.add(flightforBooking);
-			   
-			   bookingListGlobal.add(B1);
-			   
-			   System.out.println("Booking has been sucessful");
-			   System.out.println("Please fine the Iernary");
-			   System.out.println("Pasenger Name : " + " " + B1.getPassnger().getName() + " " + "Flight Number : " + " " + B1.getFlight().getFlightNumber());
-			   
-			   
-		   }
+				   B1.setSeatNumber(B1.seatAllotment(flightforBooking));
+				   System.out.println("The Seat Number is " + " " + B1.getSeatNumber());
+				  
+				   flightforBooking.addBooking(B1);
+				   addingPassengerDetails.setBookingDetails(B1);
+				   passengerListGlobal.add(addingPassengerDetails);
+				   bookingListGlobal.add(B1);
+				   System.out.println("Booking has been sucessful");
+				   B1.setBookingState("BOOKED");
+				   System.out.println("Please fine the Iernary");
+				   System.out.println("Pasenger Name : " + " " + B1.getPassnger().getName() + " " + "Flight Number : " + " " + B1.getFlight().getFlightNumber());
+
+		}
+		else
+		{
+			  B1.setBookingState("CLOSED");
+			System.out.println("SORRY !! Alreasy the FLIGHT is FULL");
+		}
 		   
-		   
+		}	   
 	}
 	
 	public static Passenger addingPassengerDetails()
@@ -795,22 +809,7 @@ public class Main {
 					  flight.getFlightDelay();
 				  }
 			  }
-			  
-//		  case 5:
-//			  Employee empadd = new Employee();
-//			  Scanner inp = new Scanner(System.in);
-//			  System.out.println("Enter the Employee name");
-//			  
-//			  empadd.setName(inp.nextLine());
-//			  empadd.setEmployeeId();
-//			  System.out.println("Enter the Employee email");
-//			  empadd.setEmail(inp.nextLine());
-//			  System.out.println("Enter the Employee Phone");
-//			  empadd.setEmail(inp.nextLine());
-//			  System.out.println("Enter the Employee Address");
-//			  empadd.setEmail(inp.nextLine());
-//			  employeeListGlobal.add(empadd);
-//			  empadd.displayAllEmployees(empfgloyeeListGlobal);
+
 		  case 5:
 			  displayItems();
 			   break;
