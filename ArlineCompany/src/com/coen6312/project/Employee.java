@@ -33,10 +33,7 @@ public class Employee extends Person{
     	
     	}
     }
-    
-    
-    
-    
+     
 	public List<Employee> getSuperWises() {
 		return superWises;
 	}
@@ -45,7 +42,7 @@ public class Employee extends Person{
 
 
 	public void setSuperWises(List<Employee> superWises) {
-		if(superWises.size()< 11)
+		if(this.superWises.size()< 11 && this.role=="Manager")
 		{
 			this.superWises = superWises;
 		}
@@ -54,12 +51,7 @@ public class Employee extends Person{
 			System.out.println("Crossed maximum limit to superwise");
 		}
 		
-		
 	}
-
-
-
-
 	public List<Flight> getFlightDetails() {
 		return FlightDetails;
 	}
