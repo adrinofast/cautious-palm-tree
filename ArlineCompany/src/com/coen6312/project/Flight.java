@@ -191,8 +191,17 @@ public class Flight {
 			{
 				if((bbb.getFlight().getFlightNumber() == b.getFlight().getFlightNumber())&&(bbb.getPassnger().getName() == b.getPassnger().getName()))
 				{
-					bookingExist =1;
-					break;
+					if(bbb.getFlight().getDepartureDate() == b.getFlight().getDepartureDate())
+						
+					{
+						if(bbb.getFlight().getDepartureTime() == b.getFlight().getDepartureTime())
+						{
+							bookingExist =1;
+							break;
+						}
+						
+					}
+					
 				}
 			}
 			

@@ -117,6 +117,7 @@ public class Main {
 		f1.setFightCapacity("52");
 		f1.setDestinationAirport(a3);
 		f1.setFlightNumber();
+		f1.setDepartureDate(LocalDate.now().toString());;
 		LocalTime time =  LocalTime.now();
 		f1.setDepartureTime(time);
 		f1.setFlightState("SCHEDULED");
@@ -137,6 +138,7 @@ public class Main {
 		f2.setDepartureTime(time1);
 		f2.setDestinationAirport(a4);
 		f2.setFlightNumber();
+		f2.setDepartureDate(LocalDate.now().toString());
 	   LocalDate dt1 = LocalDate.now();
 	   f2.setFlightState("SCHEDULED");
 	   f2.setArrangment(f2.generateSeatingArrangement());
@@ -204,6 +206,7 @@ public class Main {
 		e5.setName("Sony Murph");
 		e5.setAddress("Sirya");
 		e5.setRole("Manager");
+		
 		
 		employeeList.add(e2);
 		employeeList.add(e1);
@@ -423,6 +426,7 @@ public class Main {
 		List <Employee> emLis = new ArrayList<Employee>();
 
 		ffAdd.setDepartureTime(LocalTime.now());
+		ffAdd.setDepartureDate(LocalDate.now().toString());
 		ffAdd.setArrivalTime(LocalTime.now().plusHours(8));
 		System.out.println("Enter 1 for estimated arrival time as arrival time or Press 2");
 		if(addFliIn.nextInt() == 1)
@@ -725,7 +729,7 @@ public class Main {
 		else
 		{
 			  B1.setBookingState("CLOSED");
-			System.out.println("SORRY !! Alreasy the FLIGHT is FULL");
+			System.out.println("SORRY !! Already the FLIGHT is FULL");
 		}
 		   
 		}	   

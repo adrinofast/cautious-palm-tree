@@ -1,6 +1,8 @@
 package com.coen6312.project;
 
 
+import java.util.ArrayList;
+
 /*
 -----------Subitted By----------
 Vishnu PhaniTeja Devarapu  Id: 40118286
@@ -17,6 +19,7 @@ public class Employee extends Person{
 	
 	private int employeeId;
     private  String role;
+    private List<Employee> superWises = new ArrayList<Employee>(10);
     
     
     private List<Flight> FlightDetails;
@@ -32,6 +35,31 @@ public class Employee extends Person{
     }
     
     
+    
+    
+	public List<Employee> getSuperWises() {
+		return superWises;
+	}
+
+
+
+
+	public void setSuperWises(List<Employee> superWises) {
+		if(superWises.size()< 11)
+		{
+			this.superWises = superWises;
+		}
+		else
+		{
+			System.out.println("Crossed maximum limit to superwise");
+		}
+		
+		
+	}
+
+
+
+
 	public List<Flight> getFlightDetails() {
 		return FlightDetails;
 	}
@@ -61,9 +89,6 @@ public class Employee extends Person{
 				+ ", address=" + address + ", telephone=" + telephone + ", email=" + email + "]";
 	}
     
-   public void employeeDistribution(Flight flight)
-   {
-	   
-   }
+   
 
 }
